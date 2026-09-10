@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1220">
+<title>All Hair Connect: A Stronger Hair Community Together</title>
+<meta name="description" content="All Hair Connect is a single platform for beauty industry students, licensed professionals, and their clients. Hours tracking, technique coaching, client Hair Passports, booking, and a public directory of pros.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="All Hair Connect">
+<meta property="og:description" content="A Stronger Hair Community Together. One platform for beauty industry students, pros, and clients.">
+<meta property="og:image" content="https://deginald.github.io/toolkit-app/logo.png">
+<meta property="og:type" content="website">
+
+<style>
+  :root{
+    --bg: #0A1220;
+    --bg-panel: #0F1A2B;
+    --bg-panel-2: #131f33;
+    --line: rgba(212,175,106,0.16);
+    --gold: #D4AF6A;
+    --gold-bright: #E8C87E;
+    --gold-dim: rgba(212,175,106,0.35);
+    --text: #F3EFE6;
+    --text-dim: #A9B2C3;
+    --text-faint: #7C879C;
+    --radius: 16px;
+    --maxw: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:20px;}
+
+  /* subtle background texture */
+  body{
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(212,175,106,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(212,175,106,0.06), transparent 55%);
+    background-repeat:no-repeat;
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.02em;}
+  .brand img{height:34px; width:34px; border-radius:50%;}
+  .brand span{font-size:1.02rem;}
+  nav.links{display:flex; gap:26px; font-size:0.92rem; color:var(--text-dim);}
+  nav.links a{text-decoration:none; transition:color .15s;}
+  nav.links a:hover{color:var(--gold-bright);}
+  @media (max-width:680px){
+    nav.links{display:none;}
+    .nav-inner{gap:10px;}
+    .brand span{font-size:0.92rem;}
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 22px; border-radius:999px; font-weight:600; font-size:0.95rem;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-gold{
+    background:linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color:#1a1206;
+    box-shadow:0 6px 20px -6px rgba(212,175,106,0.55);
+  }
+  .btn-gold:hover{box-shadow:0 8px 26px -6px rgba(212,175,106,0.75);}
+  .btn-ghost{
+    background:transparent; color:var(--text); border-color:rgba(255,255,255,0.18);
+  }
+  .btn-ghost:hover{border-color:var(--gold-dim); color:var(--gold-bright);}
+  .btn-sm{padding:9px 16px; font-size:0.85rem;}
+
+  /* Hero */
+  .hero{padding-block:76px 60px; text-align:center;}
+  .hero .crest{width:96px; height:96px; margin:0 auto 22px; border-radius:50%;}
+  .eyebrow{
+    display:inline-block; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold-bright); background:rgba(212,175,106,0.10); border:1px solid var(--gold-dim);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.12; margin:0 0 18px; font-weight:800; letter-spacing:-0.01em;
+  }
+  h1 .accent{color:var(--gold-bright);}
+  .lede{
+    max-width:640px; margin:0 auto 34px; color:var(--text-dim); font-size:1.1rem;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+  section{padding-block:64px;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 44px;}
+  .section-head .kicker{
+    color:var(--gold-bright); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:10px; display:block;
+  }
+  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.1rem); margin:0 0 12px;}
+  .section-head p{color:var(--text-dim); margin:0;}
+
+  /* Pillars */
+  .pillars{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  @media (max-width:820px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{
+    background:linear-gradient(180deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 26px;
+  }
+  .pillar .icon{
+    width:46px; height:46px; border-radius:12px;
+    background:rgba(212,175,106,0.12); border:1px solid var(--gold-dim);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    font-size:1.3rem;
+  }
+  .pillar h3{margin:0 0 10px; font-size:1.15rem;}
+  .pillar p{margin:0 0 14px; color:var(--text-dim); font-size:0.95rem;}
+  .pillar ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:0.9rem;}
+  .pillar li{margin-bottom:6px;}
+  .pillar .tag{
+    display:inline-block; font-size:0.72rem; color:var(--gold-bright); text-transform:uppercase;
+    letter-spacing:0.08em; font-weight:700; margin-bottom:10px;
+  }
+
+  /* How it works */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; counter-reset:step;}
+  @media (max-width:820px){ .steps{grid-template-columns:1fr;} }
+  .step{position:relative; padding-left:52px;}
+  .step::before{
+    counter-increment:step; content:counter(step);
+    position:absolute; left:0; top:0; width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--gold-dim); color:var(--gold-bright);
+    display:flex; align-items:center; justify-content:center; font-weight:700;
+  }
+  .step h4{margin:2px 0 6px; font-size:1.02rem;}
+  .step p{margin:0; color:var(--text-dim); font-size:0.92rem;}
+
+  /* Directory teaser */
+  .banner{
+    background:linear-gradient(135deg, rgba(212,175,106,0.14), rgba(212,175,106,0.03));
+    border:1px solid var(--gold-dim); border-radius:20px;
+    padding:36px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .banner h3{margin:0 0 8px; font-size:1.3rem;}
+  .banner p{margin:0; color:var(--text-dim); max-width:480px;}
+
+  /* Access / waitlist */
+  .access{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:24px;
+    padding:44px; display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:820px){ .access{grid-template-columns:1fr; padding:28px;} }
+  .access h2{margin:0 0 12px; font-size:1.6rem;}
+  .access p{color:var(--text-dim); margin:0 0 8px;}
+  .badge-beta{
+    display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--gold-bright);
+    background:rgba(212,175,106,0.1); border:1px solid var(--gold-dim); padding:6px 12px; border-radius:999px;
+    margin-bottom:16px;
+  }
+  .badge-beta .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);}
+  form.request{display:flex; flex-direction:column; gap:14px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:0.82rem; color:var(--text-dim);}
+  .field input, .field select{
+    background:#0c1526; border:1px solid rgba(255,255,255,0.14); color:var(--text);
+    padding:12px 14px; border-radius:10px; font-size:0.95rem; font-family:inherit;
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--gold-dim);}
+  form.request .btn{margin-top:4px;}
+  .form-note{font-size:0.78rem; color:var(--text-faint); margin-top:10px;}
+
+  footer{border-top:1px solid var(--line); padding-block:34px; margin-top:20px;}
+  .footer-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .footer-brand{display:flex; align-items:center; gap:10px; color:var(--text-dim); font-size:0.88rem;}
+  .footer-brand img{height:24px;width:24px;border-radius:50%;}
+  .footer-links{display:flex; gap:20px; font-size:0.85rem; color:var(--text-faint);}
+  .footer-links a{text-decoration:none;}
+  .footer-links a:hover{color:var(--gold-bright);}
+
+  /* Modal */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(5,9,16,0.72); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; padding:20px; z-index:100;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    width:100%; max-width:440px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:20px; padding:28px; max-height:86vh; overflow-y:auto;
+  }
+  .modal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .modal-head h3{margin:0; font-size:1.15rem;}
+  .modal-close{
+    background:none; border:none; color:var(--text-dim); font-size:1.3rem; cursor:pointer; line-height:1; padding:4px;
+  }
+  .tabs{display:flex; gap:8px; margin-bottom:18px;}
+  .tab-btn{
+    flex:1; padding:9px 6px; border-radius:10px; border:1px solid rgba(255,255,255,0.12);
+    background:transparent; color:var(--text-dim); font-size:0.82rem; cursor:pointer;
+  }
+  .tab-btn.active{border-color:var(--gold-dim); color:var(--gold-bright); background:rgba(212,175,106,0.08);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .tab-panel ol{margin:0; padding-left:20px; color:var(--text-dim); font-size:0.92rem;}
+  .tab-panel li{margin-bottom:10px;}
+  .modal .btn{width:100%; margin-top:18px;}
+  .modal-sub{color:var(--text-faint); font-size:0.82rem; margin:14px 0 0; text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <img src="https://deginald.github.io/toolkit-app/logo.png" alt="All Hair Connect crest" onerror="this.style.display='none'">
+      <span>All Hair Connect</span>
+    </div>
+    <nav class="links">
+      <a href="#pillars">What it is</a>
+      <a href="#directory">Find a Pro</a>
+      <a href="#access">Get Access</a>
+    </nav>
+    <button class="btn btn-gold btn-sm" onclick="openInstallModal()">Get the App</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="crest" src="https://deginald.github.io/toolkit-app/logo.png" alt="All Hair Connect crest" onerror="this.style.display='none'">
+    <span class="eyebrow">Invitation-Only Beta</span>
+    <h1>A Stronger Hair Community, <span class="accent">Together</span></h1>
+    <p class="lede">One platform for beauty industry students, licensed professionals, and the clients they serve, with hours tracking, guided technique coaching, portable client histories, booking, and more, all in one place.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-gold" onclick="openInstallModal()">Get the App</button>
+      <a class="btn btn-ghost" href="#access">Request Access</a>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Built for every stage</span>
+      <h2>Whoever you are in the beauty industry, there's a toolkit for you</h2>
+      <p>All Hair Connect isn't three separate apps stitched together. It's one platform, with the right tools shown to the right person.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon">🎓</div>
+        <span class="tag">Students</span>
+        <h3>School Toolkit</h3>
+        <p>Everything a beauty industry student needs to track progress and build real skill.</p>
+        <ul>
+          <li><strong>Pace</strong>: track your hours and graduation date as you go</li>
+          <li><strong>Coach</strong>: step-by-step technique walkthroughs for cuts, color, bleach, perms, and relaxers</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="icon">✂️</div>
+        <span class="tag">Licensed &amp; Apprentice Pros</span>
+        <h3>Pro Toolkit</h3>
+        <p>Run your book, grow your skill record, and keep clients coming back.</p>
+        <ul>
+          <li><strong>Consult</strong>: product &amp; treatment recommendations by texture, condition, and scalp</li>
+          <li><strong>Ledger</strong>: a self-tracked skill record you own, shareable in one link</li>
+          <li><strong>Booking, Loyalty &amp; Earnings</strong>: appointments, reward tiers, and income tracking</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="icon">🪪</div>
+        <span class="tag">Clients</span>
+        <h3>Hair Passport</h3>
+        <p>A portable record of your hair (texture, formulas, and visit history) that belongs to you, not any one shop.</p>
+        <ul>
+          <li>Photos and notes from every visit, in one place</li>
+          <li>Take it with you wherever you get your hair done</li>
+          <li>Book appointments and track rewards with your pro</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How it works</span>
+      <h2>Three steps to get connected</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h4>Create your Hair Passport</h4>
+        <p>Clients get a simple code (no app-store download required) that becomes their portable hair history.</p>
+      </div>
+      <div class="step">
+        <h4>Connect with your pro or school</h4>
+        <p>Students track hours and coaching. Pros log visits, consults, and appointments against a real client record.</p>
+      </div>
+      <div class="step">
+        <h4>Grow, together</h4>
+        <p>A stronger record for clients, a stronger skill history for pros, and a stronger pipeline for schools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="directory">
+  <div class="wrap">
+    <div class="banner">
+      <div>
+        <h3>Looking for a beauty professional, not building one?</h3>
+        <p>Browse licensed pros on All Hair Connect, check availability, and book directly. No account needed to start.</p>
+      </div>
+      <a class="btn btn-gold" href="https://app.allhairconnect.com/directory.html">Find a Pro</a>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <div class="access">
+      <div>
+        <span class="badge-beta"><span class="dot"></span> Invitation-only beta</span>
+        <h2>Request access</h2>
+        <p>All Hair Connect is currently in a limited, invitation-based pilot while we work directly with a small group of schools, pros, and clients.</p>
+        <p>Tell us a bit about yourself and we'll reach out about getting you set up.</p>
+      </div>
+      <form class="request" id="requestForm">
+        <div class="field">
+          <label for="req-name">Name</label>
+          <input id="req-name" type="text" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="req-email">Email</label>
+          <input id="req-email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="req-role">I am a...</label>
+          <select id="req-role">
+            <option>Beauty industry student</option>
+            <option>Licensed / apprentice professional</option>
+            <option>School or program director</option>
+            <option>Client looking for a beauty professional</option>
+            <option>Just curious</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-gold">Request Access</button>
+        <p class="form-note">This opens an email to our team with your details pre-filled. Nothing is sent automatically.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="https://deginald.github.io/toolkit-app/logo.png" alt="" onerror="this.style.display='none'">
+      <span>© <span id="year"></span> All Hair Connect</span>
+    </div>
+    <div class="footer-links">
+      <a href="#pillars">What it is</a>
+      <a href="#directory">Find a Pro</a>
+      <a href="#access">Get Access</a>
+      <a href="mailto:deginald@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Install / Get the App modal -->
+<div class="modal-overlay" id="installModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Add All Hair Connect to your phone</h3>
+      <button class="modal-close" onclick="closeInstallModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn" data-tab="ios" onclick="showTab('ios')">iPhone</button>
+      <button class="tab-btn" data-tab="android" onclick="showTab('android')">Android</button>
+      <button class="tab-btn" data-tab="desktop" onclick="showTab('desktop')">Desktop</button>
+    </div>
+    <div class="tab-panel" data-panel="ios">
+      <ol>
+        <li>Open the app link below in <strong>Safari</strong>.</li>
+        <li>Tap the <strong>Share</strong> icon in the toolbar.</li>
+        <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+        <li>Tap <strong>Add</strong>. The icon will appear on your home screen like any other app.</li>
+      </ol>
+    </div>
+    <div class="tab-panel" data-panel="android">
+      <ol>
+        <li>Open the app link below in <strong>Chrome</strong>.</li>
+        <li>Tap the <strong>⋮</strong> menu in the top right.</li>
+        <li>Tap <strong>Add to Home screen</strong> (or <strong>Install app</strong>, if offered).</li>
+        <li>Confirm. The icon will appear on your home screen.</li>
+      </ol>
+    </div>
+    <div class="tab-panel" data-panel="desktop">
+      <ol>
+        <li>All Hair Connect is built for phones. For the best experience, open the link below on your phone.</li>
+        <li>Or continue below to use it right here in your browser.</li>
+      </ol>
+    </div>
+    <a class="btn btn-gold" href="https://app.allhairconnect.com/" target="_blank" rel="noopener">Continue to the App</a>
+    <p class="modal-sub">Not on an app store yet. It installs straight from your browser.</p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Detect platform to preselect the right install tab
+  function detectPlatform(){
+    var ua = navigator.userAgent || '';
+    if(/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+    if(/Android/i.test(ua)) return 'android';
+    return 'desktop';
+  }
+  function showTab(name){
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === name); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.toggle('active', p.dataset.panel === name); });
+  }
+  function openInstallModal(){
+    showTab(detectPlatform());
+    document.getElementById('installModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInstallModal(){
+    document.getElementById('installModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('installModal').addEventListener('click', function(e){
+    if(e.target === this) closeInstallModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeInstallModal();
+  });
+
+  // Request access -> pre-filled email (no backend required)
+  document.getElementById('requestForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('req-name').value.trim();
+    var email = document.getElementById('req-email').value.trim();
+    var role = document.getElementById('req-role').value;
+    var subject = encodeURIComponent('All Hair Connect: Access Request');
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'I am a: ' + role + '\n\n' +
+      'Please reach out about getting me set up on All Hair Connect.'
+    );
+    window.location.href = 'mailto:deginald@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
