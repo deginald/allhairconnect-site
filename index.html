@@ -724,26 +724,28 @@ footer{border-top:1px solid var(--line);padding:48px 0 36px;}
         <div><strong>No pressure</strong><p>Reaching out doesn't start a subscription or trial.</p></div>
       </div>
     </div>
-    <form class="form-panel" onsubmit="return sendAccessForm(event)">
+    <form class="form-panel" id="access-form" onsubmit="return sendAccessForm(event)">
+      <input type="hidden" name="_subject" value="New Vono inquiry">
+      <input type="hidden" name="_captcha" value="false">
       <div class="form-row">
         <label for="f-name">Name</label>
-        <input id="f-name" type="text" required placeholder="Your name">
+        <input id="f-name" name="name" type="text" required placeholder="Your name">
       </div>
       <div class="form-row">
         <label for="f-email">Email</label>
-        <input id="f-email" type="email" required placeholder="you@email.com">
+        <input id="f-email" name="email" type="email" required placeholder="you@email.com">
       </div>
       <div class="form-row">
         <label for="f-role">I am a</label>
-        <select id="f-role">
+        <select id="f-role" name="role">
           <option>Student</option>
           <option>Licensed professional</option>
           <option>Client</option>
           <option>Shop owner</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-gold">Send message</button>
-      <div class="form-note">This opens an email to our team with your details filled in.</div>
+      <button type="submit" class="btn btn-gold" id="access-submit">Send message</button>
+      <div class="form-note" id="access-note">We'll get back to you by email, usually within a day.</div>
     </form>
   </div>
 </section>
@@ -830,12 +832,40 @@ function switchTab(name, el){
 }
 function sendAccessForm(e){
   e.preventDefault();
+  var form = document.getElementById('access-form');
+  var btn = document.getElementById('access-submit');
+  var note = document.getElementById('access-note');
   var name = document.getElementById('f-name').value;
   var email = document.getElementById('f-email').value;
   var role = document.getElementById('f-role').value;
-  var subject = encodeURIComponent('Vono inquiry from ' + name);
-  var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nRole: ' + role + '\n\n');
-  window.location.href = 'mailto:vonosupport@gmail.com?subject=' + subject + '&body=' + body;
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  fetch('https://formsubmit.co/ajax/vonosupport@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      role: role,
+      _subject: 'New Vono inquiry from ' + name
+    })
+  }).then(function(res){
+    if(!res.ok){ throw new Error('request failed'); }
+    return res.json();
+  }).then(function(){
+    form.reset();
+    btn.textContent = 'Message sent';
+    note.textContent = "Thanks, we'll follow up by email soon.";
+    note.style.color = 'var(--gold-bright)';
+  }).catch(function(){
+    btn.disabled = false;
+    btn.textContent = 'Send message';
+    note.textContent = 'Something went wrong. Email us directly at vonosupport@gmail.com.';
+    note.style.color = '#e0917f';
+  });
+
   return false;
 }
 </script>
