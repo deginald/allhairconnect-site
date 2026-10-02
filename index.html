@@ -169,7 +169,10 @@ h1,h2,h3{font-weight:600;letter-spacing:-0.01em;}
 }
 .promo-banner strong{color:var(--gold-bright);}
 .promo-banner svg{width:18px;height:18px;vertical-align:-4px;display:inline-block;}
+.pricing-group-label{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);text-align:center;margin:0 0 20px;}
+.pricing-group-label-pro{margin-top:56px;}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+.pricing-grid.pricing-grid-2{grid-template-columns:repeat(2,1fr);max-width:640px;margin:0 auto 56px;}
 .price-card{
   background:var(--bg-panel);border:1px solid var(--line);border-radius:var(--radius);
   padding:30px 28px;display:flex;flex-direction:column;
@@ -559,17 +562,39 @@ footer{border-top:1px solid var(--line);padding:48px 0 36px;}
     <div class="pricing-head">
       <span class="eyebrow">Pricing</span>
       <h2 style="font-size:34px;margin-bottom:14px;">Simple pricing, built for where you are.</h2>
-      <p style="color:var(--text-dim);font-size:17px;">Free for students and clients. Paid tiers for professionals, with no long-term contract.</p>
+      <p style="color:var(--text-dim);font-size:17px;">Always free for students and clients. Professionals can start free too, with paid tiers to unlock more.</p>
     </div>
-    <div class="promo-banner">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 3.5L14.7 9.1L21 10L16.5 14.2L17.6 20.5L12 17.5L6.4 20.5L7.5 14.2L3 10L9.3 9.1L12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-</svg> <strong>The first 150 professionals to sign up get 6 months of Vono free</strong> (card required at signup). Everyone after that gets a <strong>7-day free trial</strong>.
-    </div>
-    <div class="pricing-grid">
+
+    <div class="pricing-group-label">Always free</div>
+    <div class="pricing-grid pricing-grid-2">
       <div class="price-card">
-        <h3>Free</h3>
-        <div class="sub">Students and clients</div>
+        <h3>Vono Student Account</h3>
+        <div class="sub">Students</div>
+        <div class="price-amount">$0</div>
+        <div class="price-note">Always free, no trial needed</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Graduation Pacer</li>
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Services tracker</li>
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Attendance tracker</li>
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Portfolio to showcase your work</li>
+        </ul>
+        <a href="#" class="btn btn-ghost" onclick="openModal();return false;">Get started free</a>
+      </div>
+      <div class="price-card">
+        <h3>Vono Passport</h3>
+        <div class="sub">Clients</div>
         <div class="price-amount">$0</div>
         <div class="price-note">Always free, no trial needed</div>
         <ul class="price-list">
@@ -585,10 +610,36 @@ footer{border-top:1px solid var(--line);padding:48px 0 36px;}
 <circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
 <path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Book appointments with any pro on Vono</li>
+        </ul>
+        <a href="#" class="btn btn-ghost" onclick="openModal();return false;">Get started free</a>
+      </div>
+    </div>
+
+    <div class="pricing-group-label pricing-group-label-pro">For professionals</div>
+    <div class="promo-banner">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3.5L14.7 9.1L21 10L16.5 14.2L17.6 20.5L12 17.5L6.4 20.5L7.5 14.2L3 10L9.3 9.1L12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</svg> <strong>The first 150 professionals to sign up get 6 months of Vono free</strong> (card required at signup). Everyone after that gets a <strong>7-day free trial</strong> on Pro and Studio.
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Vono Basic</h3>
+        <div class="sub">Independent professionals</div>
+        <div class="price-amount">$0</div>
+        <div class="price-note">Always free, no trial needed</div>
+        <ul class="price-list">
           <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
 <path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Student hour and portfolio tracking</li>
+</svg> Accept appointment bookings</li>
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Consultation features</li>
+          <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
+<path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Refresher access</li>
         </ul>
         <a href="#" class="btn btn-ghost" onclick="openModal();return false;">Get started free</a>
       </div>
@@ -602,11 +653,11 @@ footer{border-top:1px solid var(--line);padding:48px 0 36px;}
           <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
 <path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Everything in Free</li>
+</svg> Everything in Basic</li>
           <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
 <path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Booking and automatic reminders</li>
+</svg> Automatic booking reminders</li>
           <li><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="10" cy="10" r="9" fill="rgba(212,175,106,0.14)"/>
 <path d="M5.5 10.3L8.3 13L14.5 6.8" stroke="#D4AF6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
